@@ -1,0 +1,51 @@
+<br>
+<br>
+<br>
+<h1 class="d-inline">Tasks</h1>
+<div class="float-right text-right">
+  <select class="form-control d-inline" style="width: 250px;" [(ngModel)]="filterTask">
+    <option value="">Select Column For Sorting</option>
+    <option value="id">Id</option>
+    <option value="title">Title</option>
+    <option value="body">Body</option>
+    <option value="creator">Creator</option>
+    <option value="assignee">Assignee</option>
+  </select>
+  <button class="btn btn-info" routerLink="/tasks/new" *appCanDo="getCurrentUser()">Add New Task</button>
+</div>
+<br><br><br>
+<div class="table-responsive">
+  <table class="table table-info">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Creator</th>
+      <th>Assignee</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of (tasks|sortable:filterTask)" [@listAddAnimation]>
+      <td>{{task.id}}</td>
+      <td>
+        <a routerLink="/tasks/{{task.id}}">{{task.title}}</a>
+      </td>
+      <td>{{task.body | truncate}}</td>
+      <td>{{task.creator.name}}</td>
+      <td>{{task.assignee.name}}</td>
+      <td>
+        <button
+          class="btn btn-danger"
+          title="Remove task From Server"
+          (click)="delete(task)" *appCanDo="getCurrentUser()">Delete</button>
+      </td>
+      <td>
+        <button class="btn btn-info" routerLink="/tasks/{{task.id}}/edit" *appCanDo="getCurrentUser()">Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

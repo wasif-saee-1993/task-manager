@@ -1,0 +1,8 @@
+<div class="alert alert-info" style="padding-bottom: 60px;">
+  <label class="col-form-label">Comment:</label>
+  <textarea class="form-control" [(ngModel)]="comment"></textarea>
+  <div class="btn-group-sm" style="margin-top: 15px;">
+    <input type="button" value="Back" (click)="goBack()" class="btn btn-default float-right" />
+    <button class="btn btn-primary float-right" (click)="addFeedback()">Add</button>
+  </div>
+</div>

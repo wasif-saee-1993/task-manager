@@ -1,0 +1,13 @@
+<ul class="navbar-nav my-2 my-md-0">
+  <li class="nav-item"
+      *ngIf="!isAuthenticatedUser()"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" routerLink="/login">Login</a>
+  </li>
+  <li
+    *ngIf="isAuthenticatedUser()"
+    class="nav-item">
+    <a class="nav-link" (click)="logout()">Logout</a>
+  </li>
+</ul>

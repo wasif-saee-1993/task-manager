@@ -1,0 +1,8 @@
+<div class="alert alert-info" style="padding-bottom: 25px;">
+  <label class="col-form-label">{{feedback?.creator?.name}}</label>
+  <p>{{feedback?.comment}}</p>
+  <span class="badge badge-danger badge-pill float-right" title="delete" *ngIf="feedback?.creator_id === currentUserId()"
+  (click)="removeFeedback()">x</span>
+</div>
+<br>
+<br>

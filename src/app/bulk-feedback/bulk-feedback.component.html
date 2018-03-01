@@ -1,0 +1,34 @@
+<div class="row" [@listAddAnimation]>
+  <div class="col-md-6 mx-auto">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header"><h4>Bulk Feedback</h4></div>
+      <div class="card-body">
+        <form [formGroup]="bulkFeedbackForm" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label for="Feedback">Feedback:</label>
+            <textarea
+              id="comment"
+              name="comment"
+              class="form-control"
+              formControlName="comment"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="Tasks">Tasks:</label>
+            <select
+              id="task_ids"
+              name="task_ids[]"
+              multiple="multiple"
+              class="form-control"
+              formControlName="task_ids">
+              <option *ngFor="let task of myTasks" value="{{task.id}}">{{task.title}}</option>
+            </select>
+          </div>
+          <div>
+            <input type="button" class="btn btn-default" (click)="goBack()" value="Back">
+            <input type="submit" value="Save" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

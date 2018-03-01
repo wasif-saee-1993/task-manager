@@ -1,0 +1,11 @@
+<ol class="breadcrumb mt-2" *ngIf="breadcrumbService.breadcrumbs?.length">
+  <li *ngFor='let breadcrumb of breadcrumbService.breadcrumbs'
+    class="breadcrumb-item {{breadcrumb.css_class}}" >
+    <a *ngIf="!breadcrumb.css_class;else finalBreadcrumb"
+       class="breadcrumb-item"
+       routerLink="{{breadcrumb.link}}">{{breadcrumb.text}}</a>
+    <ng-template #finalBreadcrumb>
+      <span class="breadcrumb-item active">{{breadcrumb.text}}</span>
+    </ng-template>
+  </li>
+</ol>

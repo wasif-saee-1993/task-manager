@@ -1,0 +1,50 @@
+<h3 class="text-center">Add New Task</h3>
+
+<div class="row" [@listAddAnimation]>
+  <div class="col-md-6 offset-md-3">
+    <form class="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div ngModelGroup="task">
+        <div class="form-group">
+          <label>Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            [ngModel]="task?.title"
+            required
+            #title="ngModel"
+            class="form-control">
+          <p class="text-muted" *ngIf="!title.valid && title.touched">Please Enter Valid Title</p>
+        </div>
+        <div class="form-group">
+          <label>Body:</label>
+          <textarea
+            id="body"
+            name="body"
+            [ngModel]="task?.body"
+            required
+            #body="ngModel"
+            class="form-control"></textarea>
+          <p class="text-muted" *ngIf="!body.valid && body.touched">Please Enter Valid body</p>
+        </div>
+        <div class="form-group">
+          <label>Assignee:</label>
+          <select
+            class="form-control"
+            id="assignee_id"
+            name="assignee_id"
+            [ngModel]="task?.assignee_id"
+            required
+            #assignee_id="ngModel">
+            <option *ngFor="let user of users" value="{{user.id}}">{{user.name}}</option>
+          </select>
+          <p class="text-muted" *ngIf="!assignee_id.valid && assignee_id.touched">Please Select a valid User</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <input type="button" class="btn btn-default" (click)="goBack()" value="Back">
+        <input type="submit" value="Save" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</div>

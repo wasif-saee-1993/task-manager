@@ -1,0 +1,52 @@
+<div class="container" style="padding-top: 30px;" [@animateRightToLeft]>
+  <div class="row" *appCanDo="getCurrentUser()">
+    <div class="col-md-4 mx-auto">
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          All Users
+          <a routerLink="/users/new" title="Add new User"><span class="badge badge-success badge-pill float-right">+</span></a>
+        </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li *ngFor="let user of users" class="list-group-item justify-content-between">
+                <a routerLink="/users/{{user.id}}">{{user.name}}</a>
+                <a routerLink="/users/{{user.id}}/edit"><span class="badge badge-dark badge-pill float-right">edit</span></a>
+                <span class="badge badge-danger badge-pill float-right" (click)="deleteUser(user)"><a>delete</a></span>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4 mx-auto">
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          All Tasks
+          <a routerLink="/tasks/new" title="Add New Task"><span class="badge badge-success badge-pill float-right">+</span></a>
+        </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li *ngFor="let task of tasks" class="list-group-item justify-content-between">
+                <a routerLink="/tasks/{{task.id}}">{{task.title}}</a>
+                <a routerLink="/tasks/{{task.id}}/edit"><span class="badge badge-dark badge-pill float-right">edit</span></a>
+                <span class="badge badge-danger badge-pill float-right" (click)="deleteTask(task)"><a>delete</a></span>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card mb-6 box-shadow">
+        <div class="card-header">My Tasks</div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li *ngFor="let task of myTasks" class="list-group-item">
+                <a routerLink="/tasks/{{task.id}}">{{task.title}}</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

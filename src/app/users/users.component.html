@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+<h1 class="d-inline">Users</h1>
+<button class="btn btn-info float-right" routerLink="/users/new">Add New User</button>
+<br><br><br>
+<table class="table table-info">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Type</th>
+      <th>Age</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users" [@listAddAnimation]>
+    <td>{{user.id}}</td>
+    <td>
+      <a routerLink="/users/{{user.id}}">{{user.name}}</a>
+    </td>
+    <td>{{user.email}}</td>
+    <td>{{user.type_id}}</td>
+    <td>{{user.age}}</td>
+    <td>
+      <button class="btn btn-danger" title="Remove User From Server" (click)="delete(user)">delete</button>
+    </td>
+    <td>
+      <button class="btn btn-info" routerLink="/users/{{user.id}}/edit">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

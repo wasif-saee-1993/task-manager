@@ -1,0 +1,22 @@
+<h1>Task Details</h1>
+<div class="container" [@listAddAnimation]>
+  <div class="card mb-4 box-shadow">
+    <div class="card-header">{{task?.title}}</div>
+    <div class="card-body">
+      id: {{task?.id}}<br>
+      title: {{task?.title}}<br>
+      body: {{task?.body}}<br>
+      creator: {{task?.creator?.name}}<br>
+      assignee: {{task?.assignee?.name}}<br>
+    </div>
+  </div>
+  <div class="container">
+    <app-feedbacks
+      *ngFor="let feedback of task?.feedbacks"
+      [feedback]="feedback"
+      (feedbackChanged)="refreshTask($event)"></app-feedbacks>
+  </div>
+  <div class="col-md-6" *ngIf="task?.assignee_id === currentUserId()">
+    <app-add-feedback (addedFeedback)="refreshTask($event)"></app-add-feedback>
+  </div>
+</div>

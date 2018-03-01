@@ -1,0 +1,62 @@
+<h3 class="text-center">Edit User {{user?.name}}</h3>
+
+<div class="row" [@listAddAnimation]>
+  <div class="col-md-6 offset-md-3">
+    <form class="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div ngModelGroup="user">
+        <div class="form-group">
+          <label>Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [ngModel]="user?.name"
+            required #name="ngModel"
+            class="form-control">
+          <p class="text-muted" *ngIf="!name.valid && name.touched">Please Enter name</p>
+        </div>
+        <div class="form-group">
+          <label>Type:</label>
+          <input
+            type="text"
+            id="type"
+            name="type_id"
+            [ngModel]="user?.type_id"
+            required
+            #type="ngModel"
+            class="form-control">
+          <p class="text-muted" *ngIf="!type.valid && type.touched">Please Enter type id</p>
+        </div>
+        <div class="form-group">
+          <label>Age:</label>
+          <input
+            type="text"
+            id="age"
+            name="age"
+            [ngModel]="user?.age"
+            required
+            #age="ngModel"
+            class="form-control">
+          <p class="text-muted" *ngIf="!age.valid && age.touched">Please Enter age</p>
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            [ngModel]="user?.email"
+            required
+            email
+            #email="ngModel"
+            class="form-control">
+          <p class="text-muted" *ngIf="!email.valid && email.touched">Please Enter Valid Email.</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <input type="button" class="btn btn-default" (click)="cancel()" value="Cancel">
+        <input type="submit" value="Save" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</div>
